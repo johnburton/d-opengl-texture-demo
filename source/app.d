@@ -1,8 +1,8 @@
 import derelict.glfw3;
 import derelict.opengl3.gl3;
+import imageformats.jpeg;
 import std.file;
 import std.stdio;
-import imageformats.jpeg;
 
 static GLFWwindow* window;
 static uint vertexBufferId;
@@ -10,6 +10,7 @@ static uint vertexCount;
 static uint program;
 static uint texture;
 
+// dfmt off
 static float[] quad = [
 	-0.5, -0.5, 0.0, 0.0,
 	-0.5,  0.5, 0.0, 1.0,
@@ -18,6 +19,7 @@ static float[] quad = [
 	 0.5,  0.5, 1.0, 1.0,
 	 0.5, -0.5, 1.0, 0.0
 ];
+// dfmt on
 
 void initializeDisplay(int width, int height)
 {
@@ -52,16 +54,16 @@ void setupScene()
 	// Load the render shader
 	uint fs = glCreateShader(GL_FRAGMENT_SHADER);
 	string fsSource = readText("fs.glsl");
-	const char* fsSrc = cast(const char*)fsSource.ptr;
-	const int fsLen = cast(const int)fsSource.length;
+	const char* fsSrc = cast(const char*) fsSource.ptr;
+	const int fsLen = cast(const int) fsSource.length;
 	glShaderSource(fs, 1, &fsSrc, &fsLen);
 	glCompileShader(fs);
 	glGetShaderInfoLog(fs, 512, &errorLength, errorBuffer.ptr);
 
 	uint vs = glCreateShader(GL_VERTEX_SHADER);
 	string vsSource = readText("vs.glsl");
-	const char* vsSrc = cast(const char*)vsSource.ptr;
-	const int vsLen = cast(const int)vsSource.length;
+	const char* vsSrc = cast(const char*) vsSource.ptr;
+	const int vsLen = cast(const int) vsSource.length;
 	glShaderSource(vs, 1, &vsSrc, &vsLen);
 	glCompileShader(vs);
 	glGetShaderInfoLog(vs, 512, &errorLength, errorBuffer.ptr);
@@ -99,8 +101,8 @@ void renderScene()
 	glEnableVertexAttribArray(0);
 	glEnableVertexAttribArray(1);
 
-	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 4 * float.sizeof, cast(void*)0);
-	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 4 * float.sizeof, cast(void*)8);
+	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 4 * float.sizeof, cast(void*) 0);
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 4 * float.sizeof, cast(void*) 8);
 
 	glDrawArrays(GL_TRIANGLES, 0, vertexCount);
 }
