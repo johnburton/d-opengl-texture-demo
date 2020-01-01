@@ -1,0 +1,15 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/img
+img.so
+img.dylib
+img.dll
+img.a
+img.lib
+img-test-*
+*.exe
+*.o
+*.obj
+*.lst
